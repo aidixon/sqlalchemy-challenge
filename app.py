@@ -26,8 +26,6 @@ def home():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/tobs<br/>"
         f"/api/v1.0/stations<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end>"
     )
 
 @app.route("/api/v1.0/precipitation")
@@ -65,24 +63,6 @@ def tobs():
     session.close()
 
     return jsonify(highest_temp)
-
-@app.route("/api/v1.0/<start>")
-def date(start):
-    canonicalized = start.replace(" ", "").float()
-    for start in date:
-        search_term = date["start"].replace(" ", "").float()
-
-    if search_term == canonicalized:
-        return jsonify(start)
-
-@app.route("/api/v1.0/<start>/<end>")
-def date(end):
-    canonicalized = start.replace(" ", "").float()
-    for start in date:
-        search_term = date["start"].replace(" ", "").float()
-
-    if search_term == canonicalized:
-        return jsonify(start)
 
 
 if __name__ == "__main__":
