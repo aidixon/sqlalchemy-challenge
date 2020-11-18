@@ -30,7 +30,7 @@ def home():
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-    print("Precipatation page")
+    print("Precipatation page requested...")
     session = Session(engine)
     precipitation_data = session.query(Measurement.date, Measurement.prcp).\
     filter(Measurement.prcp >= 0.00).\
@@ -39,6 +39,16 @@ def precipitation():
 
     session.close()
 
+    return jsonify(precipitation_data)
+@app.route("/api/v1.0/tobs")
+def tobs():
+    print("Tobs page requested...")
+
+
+
+@app.route("/api/v1.0/stations")
+def stations():
+    print("Stations page requested...")
 
 
 
