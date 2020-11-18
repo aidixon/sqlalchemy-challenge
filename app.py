@@ -6,8 +6,18 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 
+# Setup database
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+Base = automap_base()
+Base.prepare(engine, reflect = True)
+
+Measurement = Base.classes.measurement
+Station = Base.classes.station
+
+# Setup Flask
 app = Flask(__name__)
 
+# Setup Flask routes
 @app.route("/")
 def home():
     return(
